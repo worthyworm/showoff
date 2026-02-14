@@ -7,15 +7,15 @@ VERSION = 1
 db = data_handler
 ui = ui_handler
 games = data_handler.db["games"]
-SECONDS = 3
 
 def main():
 
     while True:
-        user_choice = menu.createMenu(VERSION)
+        menu.showInfo(VERSION, False)
+        user_choice = menu.createMenu()
 
         if user_choice == 1:
-            db.add_match(input("Enter name: "),
+            db.add_match(input("Enter name for a match: "),
                 input("Enter date: "), 
                 int(input("Enter points: ")), 
                 int(input("Enter assists: ")), 
@@ -28,7 +28,9 @@ def main():
                 int(input("Enter turnovers: ")), 
                 bool(input("Result (True for W/False for L): ")))
             print("Added!")
-            time.sleep(SECONDS)
+            db.save()
+            input()
+            menu.clearScreen()
 
         elif user_choice == 2:
             allPoints = sum(game["points"] for game in games)
@@ -60,7 +62,14 @@ def main():
                 Turnovers Per game : {allTurnOvers / allGames}
                 Season Games : {allGames}
                 ''')
-            time.sleep(SECONDS)
+            input()
+            menu.clearScreen()
+
+        elif user_choice == 4:
+            menu.clearScreen()
+            menu.showInfo(VERSION, True)
+            input()
+            menu.clearScreen()
         elif user_choice == 5:
             break
 
