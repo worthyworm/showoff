@@ -8,8 +8,9 @@ class menu:
 [1] - Add a match
 [2] - Season review
 [3] - Data export
-[4] - About
-[5] - Exit
+[4] - Manage coach mode
+[5] - About
+[6] - Exit
 >'''))
         return choice
     

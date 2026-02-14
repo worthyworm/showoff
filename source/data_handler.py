@@ -5,7 +5,8 @@ try:
         db = json.load(f)
 except FileNotFoundError:
     player = input("Enter your name: ")
-    db = {"player": player, "games": []}
+    db = {"player": player, "coachMode": False, "games": []}
+
 
 def add_match(name, date, points, assists, rebounds, blocks, steals, missed, missedFT, losses, TO, Result):
     new_game = {
@@ -38,3 +39,6 @@ def add_match(name, date, points, assists, rebounds, blocks, steals, missed, mis
 def save():
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(db, f, ensure_ascii=False, indent = 4)
+
+def enableCoachMode():
+    db["coachMode"] = True
