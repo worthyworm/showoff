@@ -6,11 +6,12 @@ class menu:
 
         choice = int(input('''
 [1] - Add a match
-[2] - Season review
-[3] - Data export
-[4] - Manage coach mode
-[5] - About
-[6] - Exit
+[2] - View your matches
+[3] - Statistics review
+[4] - Data export
+[5] - Manage coach mode
+[6] - About
+[7] - Exit
 >'''))
         return choice
     

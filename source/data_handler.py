@@ -24,17 +24,7 @@ def add_match(name, date, points, assists, rebounds, blocks, steals, missed, mis
                 }
 
     db["games"].append(new_game)
-    
-'''def calculateSeasonStatistics(allpoints, allassists, allrebounds, allblocks, allsteals, allmissed, allmissedFT, allTO, games):
-    pointsPerGame = allpoints / games
-    assistsPerGame = allassists / games
-    reboundsPerGame = allrebounds / games
-    blocksPerGame = allblocks / games
-    stealsPerGame = allsteals / games
-    missedPerGame = allmissed / games
-    missedFreeThrowsPerGame = allmissedFT / games
-    turnoversPerGame = allTO / games
-'''
+
 def save():
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(db, f, ensure_ascii=False, indent = 4)

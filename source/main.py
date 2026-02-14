@@ -7,7 +7,7 @@ VERSION = 1
 db = data_handler
 ui = ui_handler
 stats = statistics_handler
-
+games = data_handler.db["games"]
 
 def main():
 
@@ -23,11 +23,21 @@ def main():
             menu.clearScreen()
 
         elif user_choice == 2:
+            gamescount = len(games)
+            for i in range(gamescount):
+                print(f"{i + 1} - {str(games[i]["name"])}")
+            choice = input("What match to show?(leave blank to exit)\n")
+            if choice != '':
+                stats.showStats(int(choice) - 1)
+            input()
+            menu.clearScreen()
+
+        elif user_choice == 3:
             stats.statsReview()
             input()
             menu.clearScreen()
 
-        elif user_choice == 4:
+        elif user_choice == 5:
             '''
             menu.clearScreen()
             print("Coach mode is a mode that helps to track statistics of all your players")
@@ -42,12 +52,12 @@ def main():
             menu.clearScreen()
             pass
 
-        elif user_choice == 5:
+        elif user_choice == 6:
             menu.clearScreen()
             menu.showInfo(VERSION, True)
             input()
             menu.clearScreen()
-        elif user_choice == 6:
+        elif user_choice == 7:
             break
 
 main()

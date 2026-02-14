@@ -52,3 +52,15 @@ def addMatch():
 def calculateEfficiency(points, rebounds, assists, steals, blocks, missed, missedFT, turnovers):
     efficiency = (points + rebounds + assists + steals + blocks) - (missed + missedFT + turnovers)
     return efficiency
+
+def showStats(matchIndex):
+    print(f'''
+Points : {str(games[matchIndex]["points"])}
+Assists : {str(games[matchIndex]["assists"])}
+Rebounds : {str(games[matchIndex]["rebounds"])}
+Blocks : {str(games[matchIndex]["blocks"])}
+Steals : {str(games[matchIndex]["steals"])}
+Shots Missed : {str(games[matchIndex]["missed"])}
+Free Throws Missed : {str(games[matchIndex]["missedFT"])}
+Turnovers : {str(games[matchIndex]["turnovers"])}
+''')
