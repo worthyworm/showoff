@@ -21,13 +21,15 @@ def add_match(name, date, points, assists, rebounds, blocks, steals, missed, mis
         "missedFT": int(missedFT),
         "turnovers": int(TO),
         "Won": bool(Result)
-                }
+    }
 
     db["games"].append(new_game)
 
+
 def save():
     with open('data.json', 'w', encoding='utf-8') as f:
-        json.dump(db, f, ensure_ascii=False, indent = 4)
+        json.dump(db, f, ensure_ascii=False, indent=4)
+
 
 '''
 def enableCoachMode(players):

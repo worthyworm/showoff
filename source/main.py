@@ -1,44 +1,42 @@
 import data_handler
 import ui_handler
-from ui_handler import menu
+from ui_handler import Menu
 import statistics_handler
 
-VERSION = 1
 db = data_handler
 ui = ui_handler
 stats = statistics_handler
 games = data_handler.db["games"]
 
-def main():
 
+def main():
     while True:
-        menu.showInfo(VERSION, False)
-        user_choice = menu.createMenu()
+        Menu.show_info(False)
+        user_choice = Menu.create_menu()
 
         if user_choice == 1:
-            stats.addMatch()
+            stats.add_match()
             print("Added!")
             db.save()
-            input()
-            menu.clearScreen()
+            input("Enter to continue... ")
+            Menu.clear_screen()
 
         elif user_choice == 2:
             gamescount = len(games)
             for i in range(gamescount):
-                print(f"{i + 1} - {str(games[i]["name"])}")
+                print(f"{i + 1} - {str(games[i]['name'])}")
             choice = input("What match to show?(leave blank to exit)\n")
             if choice != '' and int(choice) - 1 in range(gamescount):
-                stats.showStats(int(choice) - 1)
+                stats.show_stats(int(choice) - 1)
             else:
                 print("Game index out of range.")
-            input()
-            menu.clearScreen()
+            input("Enter to continue... ")
+            Menu.clear_screen()
 
         elif user_choice == 3:
-            menu.clearScreen()
-            stats.statsReview()
-            input()
-            menu.clearScreen()
+            stats.stats_review()
+            input("Enter to continue... ")
+            Menu.clear_screen()
 
         elif user_choice == 5:
             '''
@@ -51,18 +49,20 @@ def main():
                 pass
             '''
             print("Coach mode is currently under work. Stay tuned for updates")
-            input()
-            menu.clearScreen()
+            input("Enter to continue... ")
+            Menu.clear_screen()
             pass
 
         elif user_choice == 6:
-            menu.clearScreen()
-            menu.showInfo(VERSION, True)
-            input()
-            menu.clearScreen()
+            Menu.clear_screen()
+            Menu.show_info(True)
+            input("Enter to continue... ")
+            Menu.clear_screen()
         elif user_choice == 7:
             break
 
-main()
-db.save()
-exit(0)
+
+if __name__ == '__main__':
+    main()
+    db.save()
+    exit()
