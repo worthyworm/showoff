@@ -1,46 +1,23 @@
 import os
 
-class menu:
-    
-    def createMenu():
+from source import MENU, INFO, DESCRIPTION
 
-        choice = int(input('''
-[1] - Add a match
-[2] - View your matches
-[3] - Statistics review
-[4] - Data export
-[5] - Manage coach mode
-[6] - About
-[7] - Exit
->'''))
+
+class Menu:
+
+    @staticmethod
+    def create_menu():
+        print(MENU)
+        choice = int(input("Select >> "))
         return choice
-    
 
-    def showInfo(version, full):
+    @staticmethod
+    def show_info(full):
         if full == False:
-            print(f'''
-███████╗██╗  ██╗ ██████╗ ██╗    ██╗ ██████╗ ███████╗███████╗
-██╔════╝██║  ██║██╔═══██╗██║    ██║██╔═══██╗██╔════╝██╔════╝
-███████╗███████║██║   ██║██║ █╗ ██║██║   ██║█████╗  █████╗  
-╚════██║██╔══██║██║   ██║██║███╗██║██║   ██║██╔══╝  ██╔══╝  
-███████║██║  ██║╚██████╔╝╚███╔███╔╝╚██████╔╝██║     ██║     
-╚══════╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝  ╚═════╝ ╚═╝     ╚═╝     
-
-v{version} - meeko 2026
-              ''')
+            print(INFO)
         else:
-            print(f'''
-███████╗██╗  ██╗ ██████╗ ██╗    ██╗ ██████╗ ███████╗███████╗
-██╔════╝██║  ██║██╔═══██╗██║    ██║██╔═══██╗██╔════╝██╔════╝
-███████╗███████║██║   ██║██║ █╗ ██║██║   ██║█████╗  █████╗  
-╚════██║██╔══██║██║   ██║██║███╗██║██║   ██║██╔══╝  ██╔══╝  
-███████║██║  ██║╚██████╔╝╚███╔███╔╝╚██████╔╝██║     ██║     
-╚══════╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝  ╚═════╝ ╚═╝     ╚═╝      
+            print(INFO, DESCRIPTION)
 
-v{version} - meeko 2026
-A simple basketball statistics tracker, written to be easy to use and to be informational.
-https://github.com/worthyworm/showoff
-              ''')
-        
-    def clearScreen():
+    @staticmethod
+    def clear_screen():
         os.system('cls' if os.name == 'nt' else 'clear')
